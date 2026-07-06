@@ -33,3 +33,7 @@ Cloudflare Pages:
 - Build command: `npm run build`
 - Build output directory: `dist/public`
 - Environment variable: `BASE_PATH=/`
+
+## Análise de campanha
+
+Veja [ANALYTICS.md](./ANALYTICS.md) para o funil, eventos enviados e padrão de UTM recomendado para anúncios.

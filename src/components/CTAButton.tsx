@@ -1,6 +1,5 @@
 import React from 'react';
-import { trackClick } from '@/lib/analytics';
-import { siteConfig } from '@/config/site';
+import { buildPlayStoreUrl, trackClick } from '@/lib/analytics';
 import { cn } from '@/lib/utils';
 import { FaGooglePlay } from 'react-icons/fa';
 
@@ -26,15 +25,6 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
     trackClick(ctaId, ctaLocation);
   };
 
-  const getUrlWithUtm = () => {
-    const url = new URL(siteConfig.urls.playStore);
-    url.searchParams.set('utm_source', 'meta');
-    url.searchParams.set('utm_medium', 'paid_social');
-    url.searchParams.set('utm_campaign', 'landing_concurseiro');
-    url.searchParams.set('utm_content', ctaId);
-    return url.toString();
-  };
-
   const baseStyles = "inline-flex items-center justify-center font-semibold transition-transform active:scale-95 duration-200 rounded-xl min-h-[44px]";
   
   const variants = {
@@ -51,7 +41,7 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
 
   return (
     <a
-      href={getUrlWithUtm()}
+      href={buildPlayStoreUrl(ctaId)}
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
